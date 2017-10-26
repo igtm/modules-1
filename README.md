@@ -1,34 +1,37 @@
-# Nuxt Modules
+# Google Tag Manager
+[![npm](https://img.shields.io/npm/dt/@nuxtjs/google-tag-manager.svg?style=flat-square)](https://www.npmjs.com/package/@nuxtjs/google-tag-manager)
+[![npm (scoped with tag)](https://img.shields.io/npm/v/@nuxtjs/google-tag-manager/latest.svg?style=flat-square)](https://www.npmjs.com/package/@nuxtjs/google-tag-manager)
 
-⚠️ This is a mono repository for some smaller nuxt modules.
+> Add Google Tag Manager (GTM) to your nuxt.js application.
+This plugins automatically sends first page and route change events to GTM.
 
-**👉 You probably want to see [Awesome Nuxt](https://github.com/nuxt-community/awesome-nuxt#modules) for many more ready-to-use modules.**
+**Note:** google tag manager is not enabled in dev mode.
+You can set environment variable `NODE_ENV` to `production` for testing in dev mode.
 
-## Packages
+## Setup
+- Add `@nuxtjs/google-tag-manager` dependency using yarn or npm to your project
+- Add `@nuxtjs/google-tag-manager` to `modules` section of `nuxt.config.js`
+```js
+  modules: [
+   ['@nuxtjs/google-tag-manager', { id: 'GTM-XXXXXXX' }],
+  ]
+```
 
-- [bootstrap-vue](packages/bootstrap-vue)
-- [browserconfig](packages/browserconfig)
-- [bulma](packages/bulma)
-- [component-cache](packages/component-cache)
-- [firebase (WIP)](packages/firebase)
-- [font-awesome](packages/font-awesome)
-- [google-tag-manager](packages/google-tag-manager)
-- [localtunnel](packages/localtunnel)
-- [markdownit](packages/markdownit)
-- [offline (not maintained)](packages/offline)
-- [prepack (WIP)](packages/prepack)
-- [proxy](packages/proxy)
-- [toast](packages/toast)
-- [vendor](packages/vendor)
-- [vuetify](packages/vuetify)
-- [yandex-metrika](packages/yandex-metrika)
+## Options
 
-## Want to create your own module ?
+### `id`
+- Required
+Should be in form of `GTM-XXXXXXX`
 
-Just head to [Modules Guide](https://nuxtjs.org/guide/modules) or make your own module with [Module Template](https://github.com/nuxt-community/module-template) and don't forgot to submit a PR in [awesome-nuxt](https://github.com/nuxt-community/awesome-nuxt) when published ;)
-
-## License
-
-MIT License
-
-Copyright (c) [Nuxt.js](https://nuxtjs.org)
+### Other options
+```js
+{
+  layer: 'dataLayer',
+  env: {
+    gtm_auth:        '...',
+    gtm_preview:     '...',
+    gtm_cookies_win: '...'
+  },
+  scriptURL: '//example.com'
+}
+```
